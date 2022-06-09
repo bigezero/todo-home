@@ -1,9 +1,9 @@
 <template>
   <section class="todoapp">
     <!-- 除了驼峰, 还可以使用-转换链接 -->
-    <TodoHeader></TodoHeader>
-    <TodoMain></TodoMain>
-    <TodoFooter></TodoFooter>
+    <TodoHeader  @send="gogogo"></TodoHeader>
+    <TodoMain :list='list' @destroy="removeItem"></TodoMain>
+    <TodoFooter :remainCount="list.length"></TodoFooter>
   </section>
 </template>
 
@@ -23,5 +23,26 @@ export default {
     TodoMain,
     TodoFooter,
   },
+  data(){
+    return {
+      list:[
+        {id:100,name:"eat",isDone:true},
+        {id:101,name:"codings",isDone:false},
+        {id:102,name:"sleeping",isDone:true}]
+    }
+  },
+  methods: {
+    gogogo(newContent){
+      const newData = {}
+      newData.id = this.list[this.list.length-1].id+1
+      newData.name = newContent
+      newData.isDone = false
+      this.list.push(newData);
+    },
+    removeItem(idValue){
+      let index = this.list.findIndex(obj=>obj.id === idValue)
+      this.list.splice(index,1)
+    }
+  }
 };
 </script>

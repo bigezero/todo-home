@@ -14,8 +14,9 @@
 </template>
 
 <script>
-import eventBus from '../EventBus'
+// import eventBus from '../EventBus'
 export default {
+  props:["addNewContent"],
  data(){
    return{
      addContent:""
@@ -24,10 +25,12 @@ export default {
  methods: {
    addNew(){
      const addNewContent = this.addContent.trim()
+
      if(addNewContent == 0){
+
        return
      }else{
-       eventBus.$emit('send',addNewContent)
+       this.$emit("send",addNewContent)
      }
    }
  }
