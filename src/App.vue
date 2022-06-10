@@ -1,7 +1,7 @@
 <template>
   <section class="todoapp">
     <!-- 除了驼峰, 还可以使用-转换链接 -->
-    <TodoHeader  @send="gogogo"></TodoHeader>
+    <TodoHeader  @send="gogogo" :arr="list"></TodoHeader>
     <TodoMain :list='showArr' @destroy="removeItem"></TodoMain>
     <TodoFooter :remainCount="showArr.length" @changeType="typeFn" @clear="clearDone"></TodoFooter>
   </section>

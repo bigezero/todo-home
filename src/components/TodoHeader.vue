@@ -16,7 +16,7 @@
 <script>
 // import eventBus from '../EventBus'
 export default {
-  props:["addNewContent"],
+  props:["arr"],
  data(){
    return{
      addContent:""
@@ -36,7 +36,13 @@ export default {
    }
  },
  computed:{
-   isAll(){
+   isAll:{
+    set(checked){
+      this.arr.forEach(obj=>obj.isDone = checked)
+    },
+    get(){
+      return this.arr.length !==0 && this.arr.every(obj=>obj.isDone === true)
+    }
    }
  }
 }
