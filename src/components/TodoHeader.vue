@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <h1>todos</h1>
-    <input id="toggle-all" class="toggle-all" type="checkbox" >
+    <input id="toggle-all" class="toggle-all" type="checkbox" v-model="isAll">
     <label for="toggle-all"></label>
     <input
       class="new-todo"
@@ -31,7 +31,12 @@ export default {
        return
      }else{
        this.$emit("send",addNewContent)
+       this.addContent = ""
      }
+   }
+ },
+ computed:{
+   isAll(){
    }
  }
 }
